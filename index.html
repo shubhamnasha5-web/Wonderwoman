@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Happy Birthday Bhavna</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            font-family: 'Courier New', monospace;
+            color: white;
+            text-align: center;
+        }
+        #mainDiv {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        #code {
+            background: #111;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ff4b5c;
+            display: inline-block;
+            text-align: left;
+        }
+        .comments { color: #aaaaaa; }
+        .keyword { color: #ff4b5c; }
+        .string { color: #ffd700; }
+        #loveHeart {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-top: 30px;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+        #copyright {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        h1 {
+            color: #ff4b5c;
+        }
+    </style>
+</head>
+<body>
+<div id="mainDiv">
+    <h1>Happy 30th Birthday Bhavna ❤️</h1>
+	<div id="content">
+		<div id="code">
+			<span class="comments">/**</span><br>
+			<span class="comments">* Today is a very special day.</span><br>
+			<span class="comments">* So I created this webpage for you, Bhavna Taparia.</span><br>
+			<span class="comments">*/</span><br>
+			Girl u = <span class="keyword">new</span> Girl(<span class="string">"Bhavna Taparia"</span>);<br>
+			u.age = 30;<br>
+			<span class="comments">// My love will always be with you</span><br>
+			<span class="keyword">new</span> Thread(){<br>
+			<span class="comments">// Forever happiness, luckiness, and love</span><br>
+			while(true){<br>
+			u.fortune ++;<br>
+			u.happiness ++;<br>
+			}<br>
+			}.start();<br>
+			<span class="comments">// Happy Birthday! 💖</span><br>
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+		</div>
+	</div>
+	<div id="copyright">
+		<p>Made with love by You ❤️</p>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+// Heart animation setup
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+
+// Together date (optional timer)
+var together = new Date();
+together.setFullYear(1993,1,1); // Just example, not needed
+together.setHours(0);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+// Canvas heart animation
+function startHeartAnimation() {
+    var canvas = document.getElementById("garden");
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    var ctx = canvas.getContext("2d");
+
+    function drawHeart(x, y, size, color) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.bezierCurveTo(x, y - size/2, x - size, y - size/2, x - size, y + size/3);
+        ctx.bezierCurveTo(x - size, y + size, x, y + size*1.5, x, y + size*2);
+        ctx.bezierCurveTo(x, y + size*1.5, x + size, y + size, x + size, y + size/3);
+        ctx.bezierCurveTo(x + size, y - size/2, x, y - size/2, x, y);
+        ctx.fill();
+    }
+
+    var hearts = [];
+    for (var i = 0; i < 50; i++) {
+        hearts.push({
+            x: Math.random()*canvas.width,
+            y: Math.random()*canvas.height,
+            size: 5 + Math.random()*10,
+            color: "#ff4b5c",
+            speed: 0.5 + Math.random()
+        });
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hearts.forEach(function(h){
+            drawHeart(h.x, h.y, h.size, h.color);
+            h.y -= h.speed;
+            if(h.y < -20){ h.y = canvas.height + 20; }
+        });
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+// Start animation after small delay
+setTimeout(function () {
+    startHeartAnimation();
+}, 1000);
+
+// Typewriter effect for code
+$.fn.typewriter = function() {
+  this.each(function() {
+    var $ele = $(this), str = $ele.html(), progress = 0;
+    $ele.html('');
+    var timer = setInterval(function() {
+      var current = str.substr(progress, 1);
+      if(current == '<'){ 
+          progress = str.indexOf('>', progress) + 1;
+      } else { 
+          progress++;
+      }
+      $ele.html(str.substr(0, progress) + (progress & 1 ? '_' : ''));
+      if(progress >= str.length){
+          clearInterval(timer);
+      }
+    }, 50);
+  });
+  return this;
+};
+
+$("#code").typewriter();
+</script>
+
+</body>
+</html>
