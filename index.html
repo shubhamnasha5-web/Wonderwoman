@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Happy Birthday Bhavna</title>
-	<meta charset="utf-8">
+    <title>Happy 30th Birthday Bhavna ❤️</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         body {
@@ -14,7 +14,7 @@
             text-align: center;
         }
         #mainDiv {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
             padding: 20px;
         }
@@ -39,61 +39,94 @@
             width: 100%;
             height: 100%;
         }
-        #copyright {
-            margin-top: 30px;
-            font-size: 14px;
-            opacity: 0.7;
+        #musicButton {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 10px;
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
-        h1 {
-            color: #ff4b5c;
-        }
+        h1 { color: #ff4b5c; }
     </style>
 </head>
 <body>
+
 <div id="mainDiv">
     <h1>Happy 30th Birthday Bhavna ❤️</h1>
-	<div id="content">
-		<div id="code">
-			<span class="comments">/**</span><br>
-			<span class="comments">* Today is a very special day.</span><br>
-			<span class="comments">* So I created this webpage for you, Bhavna Taparia.</span><br>
-			<span class="comments">*/</span><br>
-			Girl u = <span class="keyword">new</span> Girl(<span class="string">"Bhavna Taparia"</span>);<br>
-			u.age = 30;<br>
-			<span class="comments">// My love will always be with you</span><br>
-			<span class="keyword">new</span> Thread(){<br>
-			<span class="comments">// Forever happiness, luckiness, and love</span><br>
-			while(true){<br>
-			u.fortune ++;<br>
-			u.happiness ++;<br>
-			}<br>
-			}.start();<br>
-			<span class="comments">// Happy Birthday! 💖</span><br>
-		</div>
-		<div id="loveHeart">
-			<canvas id="garden"></canvas>
-		</div>
-	</div>
-	<div id="copyright">
-		<p>Made with love by You ❤️</p>
-	</div>
+
+    <div id="content">
+
+        <!-- Code snippet -->
+        <div id="code">
+            <span class="comments">/**</span><br>
+            <span class="comments">* Today is your special day.</span><br>
+            <span class="comments">* This page is for you, Bhavna Taparia.</span><br>
+            <span class="comments">*/</span><br>
+            Girl u = <span class="keyword">new</span> Girl(<span class="string">"Bhavna Taparia"</span>);<br>
+            u.age = 30;<br>
+            <span class="comments">// May happiness, love & luck increase forever</span><br>
+            <span class="keyword">new</span> Thread(){<br>
+            while(true){<br>
+            u.fortune ++;<br>
+            u.happiness ++;<br>
+            }<br>
+            }.start();<br>
+            <span class="comments">// Happy Birthday! 💖</span>
+        </div>
+
+        <!-- Heart animation -->
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+        </div>
+
+        <!-- Music -->
+        <audio id="bgMusic" loop>
+            <source src="song.mp3" type="audio/mpeg">
+        </audio>
+        <button id="musicButton" onclick="playMusic()">▶️ Play Music</button>
+
+        <!-- Optional photo gallery -->
+        <div id="gallery" style="margin-top:30px;">
+            <img src="photo1.jpg" alt="Photo 1" style="width:150px; margin:5px; border-radius:10px; box-shadow:0 0 10px #ff4b5c;">
+            <img src="photo2.jpg" alt="Photo 2" style="width:150px; margin:5px; border-radius:10px; box-shadow:0 0 10px #ff4b5c;">
+            <img src="photo3.jpg" alt="Photo 3" style="width:150px; margin:5px; border-radius:10px; box-shadow:0 0 10px #ff4b5c;">
+        </div>
+
+    </div>
+
+    <div id="copyright" style="margin-top:30px; opacity:0.7;">
+        <p>Made with love ❤️</p>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-// Heart animation setup
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
+// Typewriter effect
+$.fn.typewriter = function() {
+  this.each(function() {
+    var $ele = $(this), str = $ele.html(), progress = 0;
+    $ele.html('');
+    var timer = setInterval(function() {
+      var current = str.substr(progress, 1);
+      if(current == '<'){ 
+          progress = str.indexOf('>', progress) + 1;
+      } else { 
+          progress++;
+      }
+      $ele.html(str.substr(0, progress) + (progress & 1 ? '_' : ''));
+      if(progress >= str.length){
+          clearInterval(timer);
+      }
+    }, 50);
+  });
+  return this;
+};
+$("#code").typewriter();
 
-// Together date (optional timer)
-var together = new Date();
-together.setFullYear(1993,1,1); // Just example, not needed
-together.setHours(0);
-together.setMinutes(0);
-together.setSeconds(0);
-together.setMilliseconds(0);
-
-// Canvas heart animation
+// Heart animation
 function startHeartAnimation() {
     var canvas = document.getElementById("garden");
     canvas.width = canvas.offsetWidth;
@@ -133,34 +166,19 @@ function startHeartAnimation() {
     }
     animate();
 }
+setTimeout(startHeartAnimation, 1000);
 
-// Start animation after small delay
-setTimeout(function () {
-    startHeartAnimation();
-}, 1000);
+// Music play function
+function playMusic(){
+    var music = document.getElementById("bgMusic");
+    music.play().catch(()=>{ console.log("Click to play music") });
+}
 
-// Typewriter effect for code
-$.fn.typewriter = function() {
-  this.each(function() {
-    var $ele = $(this), str = $ele.html(), progress = 0;
-    $ele.html('');
-    var timer = setInterval(function() {
-      var current = str.substr(progress, 1);
-      if(current == '<'){ 
-          progress = str.indexOf('>', progress) + 1;
-      } else { 
-          progress++;
-      }
-      $ele.html(str.substr(0, progress) + (progress & 1 ? '_' : ''));
-      if(progress >= str.length){
-          clearInterval(timer);
-      }
-    }, 50);
-  });
-  return this;
-};
-
-$("#code").typewriter();
+// Optional: try autoplay
+window.onload = function(){
+    var music = document.getElementById("bgMusic");
+    music.play().catch(()=>{ console.log("Autoplay blocked; click button to play") });
+}
 </script>
 
 </body>
